@@ -1,0 +1,1118 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Lineage 1 Event | Easter 2026</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap"
+            rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <style>
+            /* CSS styling */
+            :root {
+                /* Light Theme - Soft Spring/Easter vibes */
+                --bg-gradient: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+                --text-color: #2d3748;
+                --sidebar-bg: rgba(255, 255, 255, 0.85);
+                --content-bg: rgba(255, 255, 255, 0.95);
+                --primary-color: #667eea;
+                --secondary-color: #764ba2;
+                --hover-bg: rgba(102, 126, 234, 0.1);
+                --border-color: rgba(226, 232, 240, 0.8);
+                --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+                --accent-color: #0d9488; /* Vibrant Teal / light mode highlighting */
+                --box-bg: rgba(255, 255, 255, 0.6);
+            }
+            body.dark-mode {
+                /* Dark Theme - Gaming/Night vibes */
+                --bg-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+                --text-color: #f1f5f9;
+                --sidebar-bg: rgba(15, 23, 42, 0.85);
+                --content-bg: rgba(30, 41, 59, 0.95);
+                --primary-color: #818cf8;
+                --secondary-color: #c084fc;
+                --hover-bg: rgba(129, 140, 248, 0.15);
+                --border-color: rgba(71, 85, 105, 0.8);
+                --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+                --accent-color: yellow; /* Yellow for dark mode highlighting */
+                --box-bg: rgba(15, 23, 42, 0.6);
+            }
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                font-family: "Inter", sans-serif;
+                background: var(--bg-gradient);
+                background-attachment: fixed;
+                color: var(--text-color);
+                transition:
+                    background 0.5s ease,
+                    color 0.3s ease;
+                display: flex;
+                min-height: 100vh;
+            }
+            h1,
+            h2,
+            h3,
+            h4 {
+                font-family: "Poppins", sans-serif;
+            }
+            .header-controls {
+                position: fixed;
+                top: 20px;
+                right: 25px;
+                display: flex;
+                gap: 12px;
+                z-index: 1000;
+                transition:
+                    opacity 0.3s ease,
+                    transform 0.3s ease;
+            }
+            .header-controls.hidden-on-scroll {
+                opacity: 0;
+                pointer-events: none;
+                transform: translateY(-20px);
+            }
+            button {
+                padding: 10px 16px;
+                cursor: pointer;
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-weight: 600;
+                font-family: "Inter", sans-serif;
+                font-size: 0.9rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition:
+                    transform 0.2s,
+                    box-shadow 0.2s,
+                    opacity 0.2s;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+                opacity: 0.95;
+            }
+
+            .hamburger-btn {
+                display: none;
+            }
+
+            .download-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                margin: 15px 0;
+                padding: 12px 24px;
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                color: white;
+                text-decoration: none;
+                border-radius: 8px;
+                font-weight: 700;
+                box-shadow: var(--shadow);
+                transition:
+                    transform 0.2s,
+                    filter 0.2s;
+            }
+            .download-btn:hover {
+                transform: translateY(-2px);
+                filter: brightness(1.1);
+            }
+            .download-btn i {
+                font-size: 1.2rem;
+            }
+
+            /* Scroll to Top Button */
+            .scroll-top-btn {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                color: white;
+                border: none;
+                cursor: pointer;
+                box-shadow: var(--shadow);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.2rem;
+                z-index: 1000;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(20px);
+                transition: all 0.3s ease;
+                padding: 0;
+            }
+            .scroll-top-btn.visible {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            .scroll-top-btn:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+                opacity: 1;
+            }
+
+            /* Layout */
+            .sidebar {
+                width: 280px;
+                background-color: var(--sidebar-bg);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                padding: 30px 20px;
+                position: fixed;
+                height: 100vh;
+                overflow-y: auto;
+                border-right: 1px solid var(--border-color);
+                box-shadow: 2px 0 15px rgba(0, 0, 0, 0.05);
+                transition:
+                    background-color 0.3s,
+                    border-color 0.3s;
+            }
+            .sidebar-header {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 30px;
+                padding-bottom: 15px;
+                border-bottom: 2px solid var(--border-color);
+            }
+            .sidebar-header i {
+                font-size: 1.8rem;
+                color: var(--primary-color);
+                background: -webkit-linear-gradient(var(--primary-color), var(--secondary-color));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .sidebar h2 {
+                font-size: 1.3rem;
+                font-weight: 700;
+                color: var(--text-color);
+                line-height: 1.2;
+            }
+            .sidebar ul {
+                list-style: none;
+            }
+            .sidebar ul li {
+                margin-bottom: 8px;
+            }
+            .sidebar ul li a {
+                text-decoration: none;
+                color: var(--text-color);
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 12px 15px;
+                border-radius: 8px;
+                transition: all 0.2s ease;
+                cursor: pointer;
+                font-weight: 500;
+                font-size: 0.95rem;
+            }
+            .sidebar ul li a i {
+                font-size: 1.1rem;
+                width: 20px;
+                text-align: center;
+                color: #888;
+                transition: color 0.2s;
+            }
+            .sidebar ul li a:hover {
+                background-color: var(--hover-bg);
+                color: var(--primary-color);
+                transform: translateX(4px);
+            }
+            .sidebar ul li a:hover i {
+                color: var(--primary-color);
+            }
+            .sidebar ul li a.active {
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                color: white;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                font-weight: 600;
+            }
+            .sidebar ul li a.active i {
+                color: var(--accent-color);
+            }
+            .main-wrapper {
+                margin-left: 280px;
+                width: calc(100% - 280px);
+                display: flex;
+                justify-content: center;
+            }
+            .main-content {
+                padding: 60px 40px;
+                max-width: 900px;
+                width: 100%;
+            }
+            .event-banner {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .event-banner h1 {
+                font-size: 2.8rem;
+                font-weight: 800;
+                margin-bottom: 10px;
+                background: -webkit-linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+            }
+            .event-banner p {
+                font-size: 1.1rem;
+                opacity: 0.8;
+                font-weight: 500;
+            }
+            section {
+                background-color: var(--content-bg);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                padding: 40px;
+                border-radius: 16px;
+                box-shadow: var(--shadow);
+                border: 1px solid var(--border-color);
+                display: none; /* Hide all sections initially */
+                animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            section.active {
+                display: block;
+            }
+            @keyframes slideUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: var(--text-color);
+            }
+            section h2 i {
+                color: var(--accent-color);
+            }
+            section p {
+                line-height: 1.8;
+                font-size: 1.05rem;
+                margin-bottom: 20px;
+                color: var(--text-color);
+                opacity: 0.9;
+            }
+            .content-block {
+                background-color: var(--box-bg);
+                padding: 25px;
+                border-radius: 12px;
+                border: 1px solid var(--border-color);
+                margin-top: 30px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            }
+            .content-block h3 {
+                font-size: 1.4rem;
+                color: var(--primary-color);
+                margin-bottom: 15px;
+            }
+            .content-block img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                background-color: rgba(0, 0, 0, 0.1);
+                border: 1px solid var(--border-color);
+            }
+            .content-block p {
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 0;
+                opacity: 0.85;
+            }
+
+            /* Two Column Layout */
+            .two-col-container {
+                margin-top: 30px;
+            }
+            .two-col-container h4 {
+                font-size: 1.2rem;
+                color: var(--primary-color);
+                margin-bottom: 15px;
+            }
+            .two-col-wrapper {
+                display: flex;
+                gap: 20px;
+            }
+            .two-col-wrapper .col-1 {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+            .two-col-wrapper .col-2 {
+                flex: 1; /* Identical width to col-1 */
+                display: flex;
+                flex-direction: column;
+            }
+
+            /* Three Column Wrapper */
+            .three-col-wrapper {
+                display: flex;
+                gap: 20px;
+                margin-top: 30px;
+            }
+            .three-col-wrapper .col {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+            .three-col-wrapper .col h4 {
+                font-size: 1.2rem;
+                color: var(--primary-color);
+                margin-bottom: 15px;
+            }
+
+            /* Highlight Text CSS Class */
+            .highlight-text {
+                color: var(--accent-color);
+                font-weight: bold;
+            }
+
+            /* Responsive */
+            @media (max-width: 900px) {
+                body {
+                    flex-direction: column;
+                }
+                .sidebar {
+                    width: 100%;
+                    position: relative;
+                    height: auto;
+                    border-right: none;
+                    border-bottom: 1px solid var(--border-color);
+                    padding: 20px;
+                }
+                .sidebar ul {
+                    display: none; /* Hide menu items by default */
+                }
+                .sidebar.menu-open ul {
+                    display: block; /* Show menu items when toggled */
+                    margin-top: 15px;
+                }
+                .main-wrapper {
+                    margin-left: 0;
+                    width: 100%;
+                }
+                .main-content {
+                    padding: 30px 20px;
+                    padding-top: 80px;
+                }
+                .header-controls {
+                    top: 15px;
+                    right: 15px;
+                    flex-direction: row;
+                    align-items: center;
+                }
+                .hamburger-btn {
+                    display: flex;
+                }
+                .event-banner h1 {
+                    font-size: 2.2rem;
+                    margin-top: 20px;
+                }
+            }
+            @media (max-width: 768px) {
+                .three-col-wrapper,
+                .two-col-wrapper {
+                    flex-direction: column;
+                }
+                /* Dynamic Paddings and Margins based on Viewport Width */
+                .main-content {
+                    padding: 5vw 4vw;
+                    padding-top: 80px;
+                }
+                section {
+                    padding: 5vw 4vw;
+                }
+                .content-block {
+                    padding: 4vw;
+                    margin-top: 4vw;
+                }
+                .sidebar {
+                    padding: 4vw;
+                }
+                /* Icon-only buttons */
+                .header-controls button {
+                    padding: 0;
+                    width: 42px;
+                    height: 42px;
+                    justify-content: center;
+                }
+                .header-controls button span {
+                    display: none; /* Hide text for all buttons */
+                }
+            }
+            @media (max-width: 480px) {
+                .header-controls {
+                    gap: 8px;
+                    right: 10px;
+                    top: 10px;
+                }
+                .header-controls button {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 1rem;
+                }
+                .sidebar-header {
+                    margin-bottom: 10px;
+                    padding-bottom: 10px;
+                }
+                .main-content {
+                    padding-top: 60px; /* Reduced top padding */
+                }
+                .event-banner h1 {
+                    font-size: 1.8rem;
+                }
+                .scroll-top-btn {
+                    bottom: 20px;
+                    right: 20px;
+                    width: 40px;
+                    height: 40px;
+                    font-size: 1rem;
+                }
+            }
+        </style>
+    </head>
+    <body class="dark-mode">
+        <div class="header-controls">
+            <button id="menuToggle" class="hamburger-btn">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </button>
+            <button id="themeToggle">
+                <i class="fas fa-sun"></i>
+                <span>Dark Mode</span>
+            </button>
+            <button id="langToggle">
+                <i class="fas fa-language"></i>
+                <span>Tagalog</span>
+            </button>
+        </div>
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-egg"></i>
+                <div>
+                    <h2 data-en="Lineage 1 Event" data-tl="Kaganapan sa Lineage 1"></h2>
+                    <span style="font-size: 0.8rem; opacity: 0.7; font-weight: 500">Easter 2026</span>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <a onclick="showSection('part1')" id="nav-part1" class="active"
+                        ><i class="fas fa-flag"></i> <span data-en="Main<br>" data-tl="Pangunahin<br>"></span
+                    ></a>
+                </li>
+                <li>
+                    <a onclick="showSection('part2')" id="nav-part2">
+                        <i class="fas fa-download"></i> <span data-en="Installation" data-tl="Pag-install"></span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="showSection('part3')" id="nav-part3"
+                        ><i class="fas fa-sign-in-alt"></i> <span data-en="Logging In" data-tl="Pag-login"></span
+                    ></a>
+                </li>
+                <li>
+                    <a onclick="showSection('part4')" id="nav-part4">
+                        <i class="fas fa-desktop"></i>
+                        <span data-en="User Interface" data-tl="Interface ng Gumagamit"></span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="showSection('part5')" id="nav-part5">
+                        <i class="fas fa-keyboard"></i>
+                        <span data-en="Hotkeys" data-tl="Mga Hotkey"></span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="showSection('part6')" id="nav-part6">
+                        <i class="fas fa-paw"></i> <span data-en="Pets" data-tl="Mga Alaga"></span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="showSection('part7')" id="nav-part7">
+                        <i class="fas fa-hat-wizard"></i>
+                        <span data-en="Magic &amp; Buffs" data-tl="Mahika at Buffs"></span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="showSection('part8')" id="nav-part8">
+                        <i class="fas fa-clipboard-check"></i> <span data-en="Preparation" data-tl="Paghahanda"></span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="showSection('part9')" id="nav-part9">
+                        <i class="fas fa-crosshairs"></i> <span data-en="Hunting" data-tl="Pangangaso"></span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="showSection('part10')" id="nav-part10">
+                        <i class="fas fa-box-open"></i> <span data-en="Storage" data-tl="Imbakan"></span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="showSection('part11')" id="nav-part11">
+                        <i class="fas fa-sign-out-alt"></i> <span data-en="Logging Out" data-tl="Pag-logout"></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="main-wrapper">
+            <main class="main-content">
+                <div class="event-banner">
+                    <h1 data-en="Easter 2026 Event" data-tl="Kaganapan sa Pasko ng Pagkabuhay 2026"></h1>
+                    <p
+                        data-en="Easter Weekend - Three-Day Gaming Event"
+                        data-tl="Katapusan ng Linggo ng Pasko ng Pagkabuhay - Tatlong-Araw na Kaganapan sa Paglalaro"></p>
+                </div>
+                <section id="part1" class="active">
+                    <h2><i class="fas fa-flag"></i> <span data-en="Main" data-tl="Pangunahin"></span></h2>
+                    <p
+                        data-en="Welcome to the Lineage 1 - Easter Weekend Gaming Event for 2026!"
+                        data-tl="Maligayang pagdating sa Lineage 1 - Easter Weekend Gaming Event para sa 2026!"></p>
+                    <div class="content-block">
+                        <h3
+                            data-en="1. Select Your Schedule - Morning or Afternoon"
+                            data-tl="1. Piliin ang Iyong Iskedyul - Umaga o Hapon"></h3>
+                        <img
+                            src="images/schedule.webp?v=1"
+                            data-src-en="images/schedule.webp?v=1"
+                            data-src-tl="images/schedule_tl.webp?v=1"
+                            alt="Schedule"
+                            loading="lazy" />
+                        <p
+                            data-en='◆ The &lt;span class="highlight-text"&gt;early morning shift&lt;/span&gt; is a total of seven hours, excluding 45 minutes meal break and 15 minutes washroom break.<br>◆ The &lt;span class="highlight-text"&gt;afternoon shift&lt;/span&gt; is a total of eight hours, excluding 45 minutes meal break and 15 minutes washroom break.<br>◆ Both shifts are three days in duration (&lt;span class="highlight-text"&gt;Easter Weekend Holiday&lt;/span&gt;) and reward a pay of &lt;span class="highlight-text"&gt;2000 Philippines Pesos&lt;/span&gt;, with a <i>100 to 200 Pesos bonus</i> depending on performance.<br>◆ Select your shift for either morning or afternoon.<br><br>'
+                            data-tl='◆ Ang &lt;span class="highlight-text"&gt;early morning shift&lt;/span&gt; ay may kabuuang pitong oras, hindi kasama ang 45 minutong meal break at 15 minutong washroom break.<br>◆ Ang &lt;span class="highlight-text"&gt;afternoon shift&lt;/span&gt; ay may kabuuang walong oras, hindi kasama ang 45 minutong meal break at 15 minutong washroom break.<br>◆ Ang parehong shift ay tatlong araw ang itatagal (&lt;span class="highlight-text"&gt;Easter Weekend Holiday&lt;/span&gt;) at magbibigay ng sahod na &lt;span class="highlight-text"&gt;2000 Philippines Pesos&lt;/span&gt;, na may <b><i>100 hanggang 200 Pesos na bonus</b></i> depende sa performance.<br>◆ Piliin ang iyong shift para sa alinman sa umaga o hapon.<br><br>'></p>
+                        <h3
+                            data-en="2. Choose Your Payment Option - Wise or GCash"
+                            data-tl="2. Piliin ang Iyong Payment Option - Wise o GCash"></h3>
+                        <img
+                            src="images/payment_options.webp?v=1"
+                            data-src-en="images/payment_options.webp?v=1"
+                            data-src-tl="images/payment_options_tl.webp?v=1"
+                            alt="Payment Options"
+                            loading="lazy" />
+                        <p
+                            data-en='◆ Payment for your Easter Weekend Gaming Event attendance will be made to your selected payment processor after event has concluded by &lt;span class="highlight-text"&gt;Wise&lt;/span&gt; or &lt;span class="highlight-text"&gt;GCash&lt;/span&gt;.<br><br>'
+                            data-tl='◆ Ang pagbabayad para sa iyong pagdalo sa Easter Weekend Gaming Event ay gagawin sa iyong napiling payment processor pagkatapos magtapos ang kaganapan sa pamamagitan ng &lt;span class="highlight-text"&gt;Wise&lt;/span&gt; o &lt;span class="highlight-text"&gt;GCash&lt;/span&gt;.<br><br>'></p>
+                        <h3
+                            data-en="3. Explore and Learn the Game - Lineage 1"
+                            data-tl="3. Galugarin at Alamin ang Laro - Lineage 1"></h3>
+                        <img
+                            src="images/next_steps.webp?v=1"
+                            data-src-en="images/next_steps.webp?v=1"
+                            data-src-tl="images/next_steps_tl.webp?v=1"
+                            alt="Next Steps"
+                            loading="lazy" />
+                        <p
+                            data-en='◆ &lt;span class="highlight-text"&gt;Access full details&lt;/span&gt; for the Lineage 1 Event by using your &lt;span class="highlight-text"&gt;navigation bar&lt;/span&gt; on the left to select any of the other sections.<br>◆ <b>Explore all specialized event sections!</b><br><br>'
+                            data-tl='◆ &lt;span class="highlight-text"&gt;I-access ang buong detalye&lt;/span&gt; para sa Lineage 1 Event sa pamamagitan ng paggamit ng iyong &lt;span class="highlight-text"&gt;navigation bar&lt;/span&gt; sa kaliwa upang piliin ang alinman sa iba pang mga seksyon.<br>◆ <b>Galugarin ang lahat ng espesyal na seksyon ng kaganapan!</b><br><br>'></p>
+                    </div>
+                </section>
+                <section id="part2">
+                    <h2>
+                        <i class="fas fa-download"></i>
+                        <span data-en="Game Installation" data-tl="Pag-install ng Laro"></span>
+                    </h2>
+                    <p
+                        data-en="Download the latest Lineage 1 client from our official portal."
+                        data-tl="I-download ang pinakabagong kliyente ng Lineage 1 mula sa aming opisyal na portal."></p>
+                    <div class="content-block">
+                        <h3 data-en="1. Download - Lineage Installer" data-tl="1. I-download - Lineage Installer"></h3>
+                        <img
+                            src="images/download.webp?v=1"
+                            data-src-en="images/download.webp?v=1"
+                            data-src-tl="images/download_tl.webp?v=1"
+                            alt="Download"
+                            style="padding-bottom: 0; margin-bottom: 0"
+                            loading="lazy" />
+                        <div style="text-align: center">
+                            <a href="/files/Lineage 1 L1Justice Installation.bat" class="download-btn" download>
+                                <i class="fas fa-download"></i> Download Lineage 1 L1Justice Installation.bat
+                            </a>
+                        </div>
+                        <p
+                            data-en='◆ &lt;span class="highlight-text"&gt;Download the Installer&lt;/span&gt; above to begin.<br>◆ After clicking the Download link, click [&lt;span class="highlight-text"&gt;Keep&lt;/span&gt;] in your brower&apos;s download prompt.<br>◆ If you do not see the Download prompt as in the image above, use your brower&apos;s hotkey: CTRL + J.<br>◆ Click the [&lt;span class="highlight-text"&gt;Keep&lt;/span&gt;] button to download the Lineage Installer to your Downloads folder.<br><br>'
+                            data-tl='◆ &lt;span class="highlight-text"&gt;I-download ang Installer&lt;/span&gt; sa itaas upang magsimula.<br>◆ Pagkatapos i-click ang link sa Pag-download, i-click ang [&lt;span class="highlight-text"&gt;Keep&lt;/span&gt;] sa prompt ng pag-download ng iyong browser.<br>◆ Kung hindi mo makita ang prompt ng Pag-download tulad ng sa larawan sa itaas, gamitin ang hotkey ng iyong browser: CTRL + J.<br>◆ I-click ang [&lt;span class="highlight-text"&gt;Keep&lt;/span&gt;] button para i-download ang Lineage Installer sa iyong Downloads folder.<br><br>'></p>
+                        <h3
+                            data-en="2. Install - Lineage Game Client"
+                            data-tl="2. I-install - Lineage Game Client"></h3>
+                        <img
+                            src="images/installation.webp?v=1"
+                            data-src-en="images/installation.webp?v=1"
+                            data-src-tl="images/installation_tl.webp?v=1"
+                            alt="Installation"
+                            loading="lazy" />
+                        <p
+                            data-en='◆ &lt;span class="highlight-text"&gt;Double-click the Installer&lt;/span&gt;, then click [&lt;span class="highlight-text"&gt;Yes&lt;/span&gt;] in the UAC Prompt to allow the installer to install Lineage 1 Client on your Desktop.<br>◆ The L1Justice Client is 4.354 GB. The installer will download and extract the game files in a folder on your Desktop called [Lineage Justice].<br>◆ &lt;span class="highlight-text"&gt;Wait for the installation process&lt;/span&gt;. Depending on your Internet connection speed and hardware, it may take 10 minutes to 60 minutes (or more) for the download and file extraction to complete.  Progress bars for these tasks will be displayed in the Installer window.<br><br>'
+                            data-tl='◆ &lt;span class="highlight-text"&gt;I-double-click ang Installer&lt;/span&gt;, pagkatapos ay i-click ang [&lt;span class="highlight-text"&gt;Yes&lt;/span&gt;] sa UAC Prompt upang payagan ang installer na i-install ang Lineage 1 Client sa iyong Desktop.<br>◆ Ang L1Justice Client ay 4.354 GB. Ido-download at ie-extract ng installer ang mga file ng laro sa isang folder sa iyong Desktop na tinatawag na [Lineage Justice].<br>◆ &lt;span class="highlight-text"&gt;Hintayin ang proseso ng pag-install&lt;/span&gt;. Depende sa bilis ng iyong koneksyon sa Internet at hardware, maaaring tumagal ng 10 minuto hanggang 60 minuto (o higit pa) para makumpleto ang pag-download at pag-extract ng file. Ipapakita ang mga progress bar para sa mga gawaing ito sa window ng Installer.<br><br>'></p>
+                        <h3 data-en="3. Installation - Complete" data-tl="3. Pag-install - Kumpleto"></h3>
+                        <img
+                            src="images/installation_complete.webp?v=1"
+                            data-src-en="images/installation_complete.webp?v=1"
+                            data-src-tl="images/installation_complete_tl.webp?v=1"
+                            alt="Installation Complete"
+                            loading="lazy" />
+                        <p
+                            data-en='◆ Above is the Lineage Justice Automated Installer window.<br>◆ Do not close this window - when installation is complete, you will see a message (in green text): [&lt;span class="highlight-text"&gt;SUCCESS&lt;/span&gt;] &lt;span class="highlight-text"&gt;Installation complete!&lt;/span&gt;<br>◆ A shortcut named [&lt;span class="highlight-text"&gt;jLauncher&lt;/span&gt;] will be placed on your Desktop. Use this shortcut to launch the Lineage game client.<br><br>'
+                            data-tl='◆ Sa itaas ay ang window ng Lineage Justice Automated Installer.<br>◆ Huwag isara ang window na ito - kapag tapos na ang pag-install, makikita mo ang isang mensahe (sa berdeng teksto): [&lt;span class="highlight-text"&gt;SUCCESS&lt;/span&gt;] &lt;span class="highlight-text"&gt;Installation complete!&lt;/span&gt;<br>◆ Isang shortcut na pinangalanang [&lt;span class="highlight-text"&gt;jLauncher&lt;/span&gt;] ang ilalagay sa iyong Desktop. Gamitin ang shortcut na ito para ilunsad ang client ng larong Lineage.<br><br>'></p>
+                    </div>
+                </section>
+                <section id="part3">
+                    <h2><i class="fas fa-sign-in-alt"></i> <span data-en="Logging In" data-tl="Pag-login"></span></h2>
+                    <p
+                        data-en="Launch the game executable. Enter your registered credentials. If you haven't received account details yet, ask your hiring manager."
+                        data-tl="Ilunsad ang executable ng laro. Ipasok ang iyong mga rehistradong kredensyal. Kung hindi mo pa natatanggap ang mga detalye ng account, magtanong sa iyong hiring manager."></p>
+                    <div class="content-block">
+                        <h3 data-en="1. Launch - jLauncher" data-tl="1. Ilunsad - jLauncher"></h3>
+                        <img
+                            src="images/jlauncher.webp?v=1"
+                            data-src-en="images/jlauncher.webp?v=1"
+                            data-src-tl="images/jlauncher_tl.webp?v=1"
+                            alt="jLauncher"
+                            loading="lazy" />
+                        <p
+                            data-en='◆ Locate the &lt;span class="highlight-text"&gt;jLauncher shortcut&lt;/span&gt; on your Desktop.<br>◆ Double-click the jLauncher shortcut, then look for and click the [&lt;span class="highlight-text"&gt;Reset&lt;/span&gt;] button.<br>◆ In the Config Reset popup window, select [&lt;span class="highlight-text"&gt;Fullscreen&lt;/span&gt;].<br>◆ Repeat the above instructions if you&apos;ve got any display issues with the game client.<br>◆ Click the [&lt;span class="highlight-text"&gt;Play!&lt;/span&gt;] button.<br><br>'
+                            data-tl='◆ Hanapin ang &lt;span class="highlight-text"&gt;jLauncher shortcut&lt;/span&gt; sa iyong Desktop.<br>◆ I-double-click ang jLauncher shortcut, pagkatapos ay hanapin at i-click ang [&lt;span class="highlight-text"&gt;Reset&lt;/span&gt;] button.<br>◆ Sa Config Reset popup window, piliin ang [&lt;span class="highlight-text"&gt;Fullscreen&lt;/span&gt;].<br>◆ Ulitin ang mga tagubilin sa itaas kung mayroon kang anumang mga isyu sa display gamit ang game client.<br>◆ I-click ang [&lt;span class="highlight-text"&gt;Play!&lt;/span&gt;] button.<br><br>'></p>
+                        <h3 data-en="2. Select - Justice Live Server" data-tl="2. Piliin - Justice Live Server"></h3>
+                        <img
+                            src="images/server_selection.webp?v=1"
+                            data-src-en="images/server_selection.webp?v=1"
+                            data-src-tl="images/server_selection.webp?v=1"
+                            alt="Server Selection"
+                            loading="lazy" />
+                        <p
+                            data-en='◆ In the Server Selection popup window, select [&lt;span class="highlight-text"&gt;Justice Live&lt;/span&gt;].<br><br>'
+                            data-tl='◆ Sa Server Selection popup window, piliin ang [&lt;span class="highlight-text"&gt;Justice Live&lt;/span&gt;].<br><br>'></p>
+                        <h3 data-en="3. Login - Login Screen" data-tl="3. Login - Login Screen"></h3>
+                        <img
+                            src="images/login_screen.webp?v=1"
+                            data-src-en="images/login_screen.webp?v=1"
+                            data-src-tl="images/login_screen.webp?v=1"
+                            alt="Login Screen"
+                            loading="lazy" />
+                        <p
+                            data-en='◆ Enter the &lt;span class="highlight-text"&gt;account name&lt;/span&gt; and &lt;span class="highlight-text"&gt;password&lt;/span&gt; that you received from your hiring manager.<br><br>'
+                            data-tl='◆ Ipasok ang &lt;span class="highlight-text"&gt;pangalan ng account&lt;/span&gt; at &lt;span class="highlight-text"&gt;password&lt;/span&gt; na natanggap mo mula sa iyong hiring manager.<br><br>'></p>
+                        <h3 data-en="4. Select - Character" data-tl="4. Piliin - Karakter"></h3>
+                        <img
+                            src="images/character_selection.webp?v=1"
+                            data-src-en="images/character_selection.webp?v=1"
+                            data-src-tl="images/character_selection.webp?v=1"
+                            alt="Character Selection"
+                            loading="lazy" />
+                        <p
+                            data-en='◆ A character will already be created and made availble for you to login with.<br>◆ Select the pre-made character on the screen by double-clicking it to login.<br>◆ NOTE: <b>Do not click</b> the [&lt;span style="color: red; font-weight: bold;"&gt;Delete&lt;/span&gt;] button as shown in the Character Login screen.  Deleting the pre-made character will forfeit any payments.<br><br>'
+                            data-tl='◆ Isang karakter ang gagawin na at magiging available para mag-login ka.<br>◆ Piliin ang pre-made na karakter sa screen sa pamamagitan ng pag-double-click dito para mag-login.<br>◆ TANDAAN: <b>Huwag i-click</b> ang [&lt;span style="color: red; font-weight: bold;"&gt;Delete&lt;/span&gt;] button na ipinapakita sa Character Login screen. Ang pagbura sa pre-made na karakter ay magpapawalang-bisa sa anumang mga pagbabayad.<br><br>'></p>
+                    </div>
+                </section>
+                <section id="part4">
+                    <h2>
+                        <i class="fas fa-desktop"></i>
+                        <span data-en="User Interface" data-tl="Interface ng Gumagamit"></span>
+                    </h2>
+                    <p
+                        data-en="Familiarize yourself with the Lineage UI. Learn how to access your inventory, skill hotkeys and storage."
+                        data-tl="Maging pamilyar sa Lineage UI. Alamin kung paano buksan ang iyong inventory, skill hotkeys at storage."></p>
+                    <div class="content-block">
+                        <h3 data-en="1. Interface" data-tl="1. Interface"></h3>
+                        <img src="images/interface.webp?v=1" alt="Interface" loading="lazy" />
+
+                        <div class="three-col-wrapper">
+                            <div class="col">
+                                <h4 data-en="2. Health & Mana Bar" data-tl="2. Health at Mana Bar"></h4>
+                                <img src="images/hpmp_bar.webp?v=1" alt="Health & Mana Bar" loading="lazy" />
+                                <p
+                                    data-en='◆ The red bar represents your health points. Keep an eye on your health bar and drink <b>Greater Healing Potions</b> by pressing [&lt;span class="highlight-text"&gt;F5&lt;/span&gt;] key (hotkey) to replenish low health.<br>◆ The blue bar represents your mana points (also known as magic points). Using the <b>Blood to Soul</b> skill by pressing [&lt;span class="highlight-text"&gt;F6&lt;/span&gt;] key (hotkey) will replenish some of your mana points (MP).<br><br>'
+                                    data-tl='◆ Ang pulang bar ay kumakatawan sa iyong health points. Bantayan ang iyong health bar at uminom ng <b>Greater Healing Potions</b> sa pamamagitan ng pagpindot sa [&lt;span class="highlight-text"&gt;F5&lt;/span&gt;] key (hotkey) upang mapuno ang mababang health.<br>◆ Ang asul na bar ay kumakatawan sa iyong mana points (kilala rin bilang magic points). Ang paggamit ng <b>Blood to Soul</b> skill sa pamamagitan ng pagpindot sa [&lt;span class="highlight-text"&gt;F6&lt;/span&gt;] key (hotkey) ay magpupuno sa ilan sa iyong mana points (MP).<br><br>'></p>
+                            </div>
+                            <div class="col">
+                                <h4
+                                    data-en="3. Weight Limit<br>(Under Weight)"
+                                    data-tl="3. Limitasyon sa Timbang<br>(Kulang sa Timbang)"></h4>
+                                <img src="images/status_ui.webp?v=1" alt="Status UI Underweight" loading="lazy" />
+                                <p
+                                    data-en='◆ This is yours character&apos;s Status Interface which shows your character level (84), adena (game currency), armor class (-88), magic resistance (199%), alignment points (9042 lawful), spell power (21), weight limit (49%), and hunger status (100%).<br>◆ Pay special attention to your &lt;span class="highlight-text"&gt;weight limit&lt;/span&gt; (49%); notice that it is <b>underweight</b> (weight bar has a white highlight) so your health and mana will regenerate naturally.'
+                                    data-tl='◆ Ito ang Status Interface ng iyong character na nagpapakita ng iyong character level (84), adena (game currency), armor class (-88), magic resistance (199%), alignment points (9042 lawful), spell power (21), weight limit (49%), at hunger status (100%).<br>◆ Bigyan ng espesyal na pansin ang iyong &lt;span class="highlight-text"&gt;weight limit&lt;/span&gt; (49%); pansinin na ito ay <b>underweight</b> (may puting highlight ang weight bar) kaya ang iyong health at mana ay natural na magre-regenerate.'></p>
+                            </div>
+                            <div class="col">
+                                <h4
+                                    data-en="4. Weight Limit<br>(Over Weight)"
+                                    data-tl="4. Limitasyon sa Timbang<br>(Sobra sa Timbang)"></h4>
+                                <img src="images/status_overweight.webp?v=1" alt="Status UI Overweight" loading="lazy" />
+                                <p
+                                    data-en='◆ Pay special attention to your weight limit (50%); notice that it is &lt;span style="color: red; font-weight: bold;"&gt;overweight&lt;/span&gt; (50% or above) so now your health and mana will not regenerate naturally.<br>◆ When you are <b>overweight</b>, you must return to town by typing: &lt;span class="highlight-text"&gt;-warp 6&lt;/span&gt;, then press the [&lt;span class="highlight-text"&gt;Enter&lt;/span&gt;] key.<br>◆When you are in town, look for the storage keeper named Kuhatin.<br>◆ For more information about storing loot, navigate to the [<b>Storage</b>] link tab in the left side website navigation bar.'
+                                    data-tl='◆ Bigyan ng espesyal na pansin ang iyong weight limit (50%); pansinin na ito ay &lt;span style="color: red; font-weight: bold;"&gt;overweight&lt;/span&gt; (50% o pataas) kaya ngayon ang iyong health at mana ay hindi natural na magre-regenerate.<br>◆ Kapag ikaw ay <b>overweight</b>, kailangan mong bumalik sa bayan sa pamamagitan ng pag-type ng: &lt;span class="highlight-text"&gt;-warp 6&lt;/span&gt;, pagkatapos ay pindutin ang [&lt;span class="highlight-text"&gt;Enter&lt;/span&gt;] key.<br>◆ Kapag nasa bayan ka na, hanapin ang storage keeper na nagngangalang Kuhatin.<br>◆ Para sa karagdagang impormasyon tungkol sa pagtatago ng loot, pumunta sa [<b>Storage</b>] link tab sa kaliwang bahagi ng website navigation bar.'></p>
+                            </div>
+                        </div>
+                        <div class="three-col-wrapper">
+                            <div class="col">
+                                <h4
+                                    data-en="5. Pet Control Bar"
+                                    data-tl="5. Bar para sa Pagkontrol ng Alagang Hayop"></h4>
+                                <img src="images/pet_control_bar.webp?v=1" alt="Pet Control Bar" loading="lazy" />
+                                <p
+                                    data-en='◆ This pet control bar only appears when you take out pets from the <b>Pet Keeper</b>.<br>◆ Click the &lt;span class="highlight-text"&gt;sword icon&lt;/span&gt; to set your pet to <b><i>attack mode</i></b>.<br>◆ Click the &lt;span class="highlight-text"&gt;direction icon&lt;/span&gt; to make your <b><i>pet move</i></b>&lt;/span&gt; out of the way if they are blocking your character or path.<br>◆ Click the &lt;span class="highlight-text"&gt;tree icon&lt;/span&gt; to make your <b><i>pet rest and stop attack</i></b>.<br><br>'
+                                    data-tl='◆ Ang Bar para sa Pagkontrol ng Alagang Hayop na ito ay lumalabas lamang kapag naglabas ka ng mga pet mula sa <b>Pet Keeper</b>.<br>◆ I-click ang &lt;span class="highlight-text"&gt;sword icon&lt;/span&gt; upang i-set ang iyong pet sa <b><i>attack mode</i></b>.<br>◆ I-click ang &lt;span class="highlight-text"&gt;direction icon&lt;/span&gt; upang gawing <b><i>gumalaw ang iyong pet</i></b>&lt;/span&gt; paalis sa daan kung hinaharangan nila ang iyong character o landas.<br>◆ I-click ang &lt;span class="highlight-text"&gt;tree icon&lt;/span&gt; upang gawing <b><i>magpahinga at huminto sa pag-atake ang iyong pet</i></b>.<br><br>'></p>
+                            </div>
+                            <div class="col">
+                                <h4 data-en="6. Map" data-tl="6. Mapa"></h4>
+                                <img src="images/map.webp?v=1" alt="Map" loading="lazy" />
+                                <p
+                                    data-en='◆ This shows your &lt;span class="highlight-text"&gt;character location&lt;/span&gt;, heading direction and surrounding terrain.<br><br>'
+                                    data-tl='◆ Ipinapakita nito ang &lt;span class="highlight-text"&gt;lokasyon ng iyong character&lt;/span&gt;, direksyon ng pupuntahan at ang kalupaan sa paligid.<br><br>'></p>
+                            </div>
+                            <div class="col">
+                                <h4
+                                    data-en="7. Player vs Player Toggle Button"
+                                    data-tl="7. Player vs Player Toggle Button"></h4>
+                                <img src="images/pvp_state.webp?v=1" alt="PvP State" loading="lazy" />
+                                <p
+                                    data-en='◆ The player vs player toggle button can be found at the bottom right corner of your screen.<br>◆ While participating in the event, ensure that this toggle button is in the &lt;span class="highlight-text"&gt;off state&lt;/span&gt;.<br><br>'
+                                    data-tl='◆ Ang player vs player toggle button ay matatagpuan sa ibabang kanang sulok ng iyong screen.<br>◆ Habang nakikilahok sa event, siguraduhin na ang toggle button na ito ay nasa &lt;span class="highlight-text"&gt;off state&lt;/span&gt;.<br><br>'></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="part5">
+                    <h2>
+                        <i class="fas fa-keyboard"></i>
+                        <span data-en="Hotkeys" data-tl="Mga Hotkey"></span>
+                    </h2>
+                    <p
+                        data-en="Learn the essential hotkeys for quick actions and combat efficiency."
+                        data-tl="Alamin ang mga mahahalagang hotkey para sa mabilis na pagkilos at kahusayan sa labanan."></p>
+                    <div class="content-block">
+                        <h3 data-en="1. Essential Hotkeys" data-tl="1. Mahahalagang Hotkey"></h3>
+                        <img src="images/interface_hotkey.webp?v=1" alt="Interface Hotkey" loading="lazy" />
+                        <p
+                            data-en='◆ There are a total of <b>three hotkey sets</b> available in the game.<br>◆ The hotkeys are found towards the <span class="highlight-text">bottom right corner</span> of the screen, and are shortcuts to items and skills.<br>◆  When logging in to use an event character, the hotkeys will be <b>pre-arranged</b> by the event managers for your use.'
+                            data-tl='◆ May kabuuang <b>tatlong set ng hotkey</b> na magagamit sa laro.<br>◆ Ang mga hotkey ay matatagpuan sa <span class="highlight-text">ibabang kanang sulok</span> ng screen, at ito ay mga shortcut para sa mga item at kasanayan.<br>◆ Kapag nag-log in para gamitin ang isang event character, ang mga hotkey ay <b>nakaayos na</b> ng mga event manager para sa iyong paggamit.'></p>
+
+                        <div class="two-col-container">
+                            <h4 data-en="2. Hotkey Layout (Empty Slots)" data-tl="2. Layout ng Hotkey (Mga Bakanteng Slot)"></h4>
+                            <div class="two-col-wrapper">
+                                <div class="col-1">
+                                    <img src="images/hotkey_empty.webp?v=1" alt="Empty Hotkey Set" loading="lazy" />
+                                </div>
+                                <div class="col-2">
+                                    <p
+                                        data-en='◆ <b>Three hotkey sets</b> are accessed and switched between each other by pressing [<span class="highlight-text">F1</span>], [<span class="highlight-text">F2</span>] and [<span class="highlight-text">F3</span>] keys on your keyboard.<br>◆ To use an item or skill in a hotkey slot within the <span class="highlight-text">top row</span>, press keyboard keys [<span class="highlight-text">F5</span>], [<span class="highlight-text">F6</span>], [<span class="highlight-text">F7</span>], and [<span class="highlight-text">F8</span>].<br>◆ To use an item or skill in a hotkey slot within the <span class="highlight-text">bottom row</span>, press keyboard keys [<span class="highlight-text">F9</span>], [<span class="highlight-text">F10</span>], [<span class="highlight-text">F11</span>], and [<span class="highlight-text">F12</span>].'
+                                        data-tl='◆ Ang <b>tatlong set ng hotkey</b> ay maa-access at mapagpapalit sa isa&apos;t isa sa pamamagitan ng pagpindot sa mga key na [<span class="highlight-text">F1</span>], [<span class="highlight-text">F2</span>] at [<span class="highlight-text">F3</span>] sa iyong keyboard.<br>◆ Para gumamit ng item o kasanayan sa isang hotkey slot sa <span class="highlight-text">itaas na hanay</span>, pindutin ang mga keyboard key na [<span class="highlight-text">F5</span>], [<span class="highlight-text">F6</span>], [<span class="highlight-text">F7</span>], at [<span class="highlight-text">F8</span>].<br>◆ Para gumamit ng item o kasanayan sa isang hotkey slot sa <span class="highlight-text">ibabang hanay</span>, pindutin ang mga keyboard key na [<span class="highlight-text">F9</span>], [<span class="highlight-text">F10</span>], [<span class="highlight-text">F11</span>], at [<span class="highlight-text">F12</span>].'></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="three-col-wrapper">
+                            <div class="col">
+                                <h4 data-en="2. Hotkey Set [F1]" data-tl="2. Set ng Hotkey [F1]"></h4>
+                                <img src="images/f1.webp?v=1" alt="F1 Hotkey Set" loading="lazy" />
+                                <p
+                                    data-en='◆ [<span class="highlight-text">F5</span>] <b>Greater Healing Potion</b> - A potion to replenish your health points (HP).<br>◆ [<span class="highlight-text">F6</span>] <b>Blood to Soul</b> - A skill to replenish some of your mana points (MP) at the expense of health points.<br>◆ [<span class="highlight-text">F7</span>] <b>Scroll of Teleportation</b> - A scroll to randomly teleport within the current zone (island, continent, instance, dungeon or tower).<br>◆ [<span class="highlight-text">F8</span>] <b>Triple Shot</b> - A ranged attack skill that uses an equipped bow that quickly strikes three times.<br><i>💡 <span style="color: grey;">This uses your mana points resource, but using [<b>F6</b>] Blood to Soul will replenish the used mana points immediate (at the expense of health points).</span><br>💡 <span style="color: grey;">Ensure that this skill is selected by left clicking the actual skill slot (notice the <b>blue highlight</b> around the skill icon).</span><br>💡 <span style="color: grey;">When the skill is selected (highlighted in blue color), the skill can be used by pressing your <b>middle mouse button</b>.</span></i><br>◆ [<span class="highlight-text">F9</span>] <b>Spirit Gem</b> - An item consumed as an ingredient when using certain elven skills.<br><i>💡 <span style="color: grey;">This is actually not a usable item or skill, but sloted to remind you to be mindful of the Spirit Gem quantity in your bag (inventory).</span></i><br>◆ [<span class="highlight-text">F10</span>] <b>Elekkadom Stew</b> - A consumable item used to increase your magic resistance by +10%.<br>◆ [<span class="highlight-text">F11</span>] <b>Wind Walk</b> - A skill (buff type) that increases your character&apos;s movement speed.<br>◆ [<span class="highlight-text">F12</span>] <b>Storm Shot</b> - A skill (buff type) that adds +6 ranged damage, and +3 ranged hit when using a bow.<br><br>'
+                                    data-tl='◆ [<span class="highlight-text">F5</span>] <b>Greater Healing Potion</b> - Isang potion para mapuno muli ang iyong health points (HP).<br>◆ [<span class="highlight-text">F6</span>] <b>Blood to Soul</b> - Isang kasanayan para mapuno muli ang ilan sa iyong mana points (MP) kapalit ng health points.<br>◆ [<span class="highlight-text">F7</span>] <b>Scroll of Teleportation</b> - Isang scroll para random na mag-teleport sa loob ng kasalukuyang zone (isla, kontinente, instance, piitan o tore).<br>◆ [<span class="highlight-text">F8</span>] <b>Triple Shot</b> - Isang ranged attack skill na gumagamit ng nakasuot na pana na mabilis na tumitira nang tatlong beses.<br><i>💡 <span style="color: grey;">Gumagamit ito ng iyong mana points resource, ngunit ang paggamit ng [<b>F6</b>] Blood to Soul ay agad na magpupuno muli ng ginamit na mana points (kapalit ng health points).</span><br>💡 <span style="color: grey;">Tiyaking napili ang kasanayang ito sa pamamagitan ng pag-left click sa mismong skill slot (pansinin ang <b>asul na highlight</b> sa paligid ng icon ng kasanayan).</span><br>💡 <span style="color: grey;">Kapag napili ang kasanayan (na-highlight sa kulay asul), magagamit ang kasanayan sa pamamagitan ng pagpindot sa iyong <b>middle mouse button</b>.</span></i><br>◆ [<span class="highlight-text">F9</span>] <b>Spirit Gem</b> - Isang item na kinokonsumo bilang sangkap kapag gumagamit ng ilang elven skills.<br><i>💡 <span style="color: grey;">Ito ay hindi talaga nagagamit na item o kasanayan, ngunit inilagay sa slot para paalalahanan kang maging maingat sa dami ng Spirit Gem sa iyong bag (imbentaryo).</span></i><br>◆ [<span class="highlight-text">F10</span>] <b>Elekkadom Stew</b> - Isang consumable item na ginagamit para pataasin ang iyong magic resistance ng +10%.<br>◆ [<span class="highlight-text">F11</span>] <b>Wind Walk</b> - Isang kasanayan (buff type) na nagpapataas sa bilis ng paggalaw ng iyong karakter.<br>◆ [<span class="highlight-text">F12</span>] <b>Storm Shot</b> - Isang kasanayan (buff type) na nagdaragdag ng +6 ranged damage, at +3 ranged hit kapag gumagamit ng pana.<br><br>'></p>
+                            </div>
+                            <div class="col">
+                                <h4 data-en="3. Hotkey Set [F2]" data-tl="3. Set ng Hotkey [F2]"></h4>
+                                <img src="images/f2.webp?v=1" alt="F2 Hotkey Set" loading="lazy" />
+                                <p
+                                    data-en='◆ [<span class="highlight-text">F5</span>] <b>Enchant Strength</b> - A skill (buff type) that adds +5 strength (STR).<br><i><span class="highlight-text">💡</span> <span style="color: grey;"> This skill requires a double-click to cast on self.</span></i><br>◆ [<span class="highlight-text">F6</span>] <b>Enchant Dexterity</b> - A skill (buff type) that adds +5 dexterity (DEX).<br><i>💡 <span style="color: grey;"> This skill requires a double-click to cast on self.</span></i><br>◆ [<span class="highlight-text">F7</span>] <b>Bless Weapon</b> - A skill (buff type) that adds +2 damage, and +2 hit.<br>💡<i><span style="color: grey;"> This skill requires a double-click to cast on self.</span><br>💡 <span style="color: grey;">Keep in mind to use this skill on your pets as well at the same time you buff yourself with this skill.</span></i><br>◆ [<span class="highlight-text">F8</span>] <b>Potion of Magic Ability Recovery</b> - A potion that increases mana (MP) regeneration.<br><i>💡 <span style="color: grey;"> Use this potion twice to align the potion buff with the duration of the other [F2] hotkey set buffs.</span></i><br>◆ [<span class="highlight-text">F9</span>] <b>Clear Mind</b> - A skill (buff type) that adds +3 wisdom (WIS).<br>💡<i><span style="color: grey;">This is is an elven-only spell that consumes one Spirit Gem.</span></i><br>◆ [<span class="highlight-text">F10</span>] <b>Resist Magic</b> - A skill (buff type) that adds +10% magic resistance (MR).<br>💡<i><span style="color: grey;">This is is an elven-only spell that consumes one Spirit Gem.</span></i><br>◆ [<span class="highlight-text">F11</span>] <b>Resist Elemental</b> - A skill (buff type) that adds +10% all types of elemental resistance.<br>💡<i><span style="color: grey;">This is is an elven-only spell that consumes one Spirit Gem.</span></i>'
+                                    data-tl='◆ [<span class="highlight-text">F5</span>] <b>Enchant Strength</b> - Isang kasanayan (buff type) na nagdaragdag ng +5 lakas (STR).<br><i><span class="highlight-text">💡</span> <span style="color: grey;"> Kinakailangan i-double click ang kasanayang ito upang i-cast sa sarili.</span></i><br>◆ [<span class="highlight-text">F6</span>] <b>Enchant Dexterity</b> - Isang kasanayan (buff type) na nagdaragdag ng +5 liksi (DEX).<br><i>💡 <span style="color: grey;"> Kinakailangan i-double click ang kasanayang ito upang i-cast sa sarili.</span></i><br>◆ [<span class="highlight-text">F7</span>] <b>Bless Weapon</b> - Isang kasanayan (buff type) na nagdaragdag ng +2 pinsala, at +2 hit.<br>💡<i><span style="color: grey;"> Kinakailangan i-double click ang kasanayang ito upang i-cast sa sarili.</span><br>💡 <span style="color: grey;">Tandaang gamitin din ang kasanayang ito sa iyong mga alaga nang sabay sa pag-buff mo sa iyong sarili gamit ang kasanayang ito.</span></i><br>◆ [<span class="highlight-text">F8</span>] <b>Potion of Magic Ability Recovery</b> - Isang potion na nagpapabilis sa pagbalik ng mana (MP).<br><i>💡 <span style="color: grey;"> Gamitin ang potion na ito nang dalawang beses upang itugma ang potion buff sa tagal ng iba pang mga buff sa set ng hotkey na [F2].</span></i><br>◆ [<span class="highlight-text">F9</span>] <b>Clear Mind</b> - Isang kasanayan (buff type) na nagdaragdag ng +3 karunungan (WIS).<br>💡<i><span style="color: grey;">Ito ay isang spell na para lang sa mga elf na kumokonsumo ng isang Spirit Gem.</span></i><br>◆ [<span class="highlight-text">F10</span>] <b>Resist Magic</b> - Isang kasanayan (buff type) na nagdaragdag ng +10% magic resistance (MR).<br>💡<i><span style="color: grey;">Ito ay isang spell na para lang sa mga elf na kumokonsumo ng isang Spirit Gem.</span></i><br>◆ [<span class="highlight-text">F11</span>] <b>Resist Elemental</b> - Isang kasanayan (buff type) na nagdaragdag ng +10% sa lahat ng uri ng elemental resistance.<br>💡<i><span style="color: grey;">Ito ay isang spell na para lang sa mga elf na kumokonsumo ng isang Spirit Gem.</span></i>'></p>
+                            </div>
+                            <div class="col">
+                                <h4 data-en="4. Hotkey Set [F3]" data-tl="4. Set ng Hotkey [F3]"></h4>
+                                <img src="images/f3.webp?v=2" alt="F3 Hotkey Set" loading="lazy" />
+                                <p
+                                    data-en='◆ [<span class="highlight-text">F5</span>] <b>Decrease Weight</b> - A skill (buff type) that decreases your weight guage, and allows you to carry more items in your bag.<br>◆ [<span class="highlight-text">F6</span>] <b>Shield</b> - A skill (buff type) that adds -2 armor class (AC).<br>💡<i><span style="color: grey;">Armor class starts at 10 and as it further decreases, your damage reduction increases.</span></i><br>◆ [<span class="highlight-text">F7</span>] <b>Blessed Armor</b> - A skill (buff type) that adds -3 armor class (AC).<br>💡<i><span style="color: grey;">This skill requires a double-click to cast on self.<br></span></i>◆ [<span class="highlight-text">F8</span>] <b>Magic Doll: Spartoi</b> - A usable item that summons a magical doll that grants -3 damage reduction.<br>◆ [<span class="highlight-text">F9</span>] <b>Greater Haste Potion</b> - A consumable item used to increase both attack speed and movement speed.<br>💡<i><span style="color: grey;">Give this item to each of your pets to also increase their attack speed and movement speed by draging and dropping the item from your inventory to your pet on the screen.</span></i><br>◆ [<span class="highlight-text">F10</span>] <b>Sharna&apos;s Polymorph Scroll</b> - A consumable item used stop some monsters from being aggressive on sight, and it increases attack speed.<br><br>'
+                                    data-tl='◆ [<span class="highlight-text">F5</span>] <b>Decrease Weight</b> - Isang kasanayan (buff type) na nagpapababa ng iyong weight gauge, at nagbibigay-daan sa iyo na magdala ng mas maraming item sa iyong bag.<br>◆ [<span class="highlight-text">F6</span>] <b>Shield</b> - Isang kasanayan (buff type) na nagdaragdag ng -2 armor class (AC).<br>💡<i><span style="color: grey;">Nagsisimula ang armor class sa 10 at habang bumababa pa ito, tumataas ang iyong damage reduction.</span></i><br>◆ [<span class="highlight-text">F7</span>] <b>Blessed Armor</b> - Isang kasanayan (buff type) na nagdaragdag ng -3 armor class (AC).<br>💡<i><span style="color: grey;">Kinakailangan i-double click ang kasanayang ito upang i-cast sa sarili.<br></span></i>◆ [<span class="highlight-text">F8</span>] <b>Magic Doll: Spartoi</b> - Isang nagagamit na item na nagpapatawag ng isang mahiwagang manika na nagbibigay ng -3 damage reduction.<br>◆ [<span class="highlight-text">F9</span>] <b>Greater Haste Potion</b> - Isang consumable item na ginagamit para pataasin ang bilis ng pag-atake at bilis ng paggalaw.<br>💡<i><span style="color: grey;">Ibigay ang item na ito sa bawat isa sa iyong mga alaga upang pataasin din ang kanilang bilis ng pag-atake at bilis ng paggalaw sa pamamagitan ng pag-drag at pag-drop ng item mula sa iyong imbentaryo patungo sa iyong alaga sa screen.</span></i><br>◆ [<span class="highlight-text">F10</span>] <b>Sharna&apos;s Polymorph Scroll</b> - Isang consumable item na ginagamit upang pigilan ang ilang halimaw sa pagiging agresibo sa unang tingin, at pinapataas nito ang bilis ng pag-atake.<br><br>'></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="part6">
+                    <h2><i class="fas fa-paw"></i> <span data-en="Pets" data-tl="Mga Alaga"></span></h2>
+                    <p
+                        data-en=""
+                        data-tl=""></p>
+                    <div class="content-block">
+                        <h3 data-en="Under Construction" data-tl="Nasa Ilalim ng Konstruksyon"></h3>
+                        <img
+                            src="images/construction.webp?v=1"
+                            alt="Under Construction"
+                            loading="lazy" />
+                        <p data-en="" data-tl=""></p>
+                    </div>
+                </section>
+                <section id="part7">
+                    <h2>
+                        <i class="fas fa-hat-wizard"></i>
+                        <span data-en="Magic & Buffs" data-tl="Mahika at Buffs"></span>
+                    </h2>
+                    <p
+                        data-en=""
+                        data-tl=""></p>
+                    <div class="content-block">
+                        <h3 data-en="Under Construction" data-tl="Nasa Ilalim ng Konstruksyon"></h3>
+                        <img
+                            src="images/construction.webp?v=1"
+                            alt="Under Construction"
+                            loading="lazy" />
+                        <p data-en="" data-tl=""></p>
+                    </div>
+                </section>
+                <section id="part8">
+                    <h2>
+                        <i class="fas fa-clipboard-check"></i> <span data-en="Preparation" data-tl="Paghahanda"></span>
+                    </h2>
+                    <p
+                        data-en=""
+                        data-tl=""></p>
+                    <div class="content-block">
+                        <h3 data-en="Under Construction" data-tl="Nasa Ilalim ng Konstruksyon"></h3>
+                        <img
+                            src="images/construction.webp?v=1"
+                            alt="Under Construction"
+                            loading="lazy" />
+                        <p data-en="" data-tl=""></p>
+                    </div>
+                </section>
+                <section id="part9">
+                    <h2><i class="fas fa-crosshairs"></i> <span data-en="Hunting" data-tl="Pangangaso"></span></h2>
+                    <p
+                        data-en=""
+                        data-tl=""></p>
+                    <div class="content-block">
+                        <h3 data-en="Under Construction" data-tl="Nasa Ilalim ng Konstruksyon"></h3>
+                        <img
+                            src="images/construction.webp?v=1"
+                            alt="Under Construction"
+                            loading="lazy" />
+                        <p data-en="" data-tl=""></p>
+                    </div>
+                </section>
+                <section id="part10">
+                    <h2><i class="fas fa-box-open"></i> <span data-en="Storage" data-tl="Imbakan"></span></h2>
+                    <p
+                        data-en=""
+                        data-tl=""></p>
+                    <div class="content-block">
+                        <h3 data-en="Under Construction" data-tl="Nasa Ilalim ng Konstruksyon"></h3>
+                        <img
+                            src="images/construction.webp?v=1"
+                            alt="Under Construction"
+                            loading="lazy" />
+                        <p data-en="" data-tl=""></p>
+                    </div>
+                </section>
+                <section id="part11">
+                    <h2>
+                        <i class="fas fa-sign-out-alt"></i> <span data-en="Logging Out" data-tl="Pag-logout"></span>
+                    </h2>
+                    <p
+                        data-en=""
+                        data-tl=""></p>
+                    <div class="content-block">
+                        <h3 data-en="Under Construction" data-tl="Nasa Ilalim ng Konstruksyon"></h3>
+                        <img
+                            src="images/construction.webp?v=1"
+                            alt="Under Construction"
+                            loading="lazy" />
+                        <p data-en="" data-tl=""></p>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <button id="scrollTopBtn" class="scroll-top-btn" title="Go to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+
+        <script>
+            // Initialize Language from localStorage (default to 'en')
+            let currentLang = localStorage.getItem("preferredLanguage") || "en";
+            document.documentElement.lang = currentLang;
+
+            // Initialize Theme from localStorage (default to dark mode)
+            const savedTheme = localStorage.getItem("preferredTheme");
+            const isDarkMode = savedTheme === null ? true : savedTheme === "dark";
+
+            if (isDarkMode) {
+                document.body.classList.add("dark-mode");
+            } else {
+                document.body.classList.remove("dark-mode");
+            }
+
+            // Initialize Section from localStorage (default to 'part1')
+            const savedSection = localStorage.getItem("selectedSection") || "part1";
+
+            // Tab Navigation Logic
+            function showSection(sectionId) {
+                // Hide all sections
+                document.querySelectorAll("section").forEach((sec) => {
+                    sec.classList.remove("active");
+                });
+
+                // Remove active class from all nav links
+                document.querySelectorAll(".sidebar a").forEach((link) => {
+                    link.classList.remove("active");
+                });
+
+                // Show selected section
+                document.getElementById(sectionId).classList.add("active");
+
+                // Highlight selected nav link
+                document.getElementById("nav-" + sectionId).classList.add("active");
+
+                // Hide menu if open on mobile
+                document.querySelector(".sidebar").classList.remove("menu-open");
+
+                // Save selected section to localStorage
+                localStorage.setItem("selectedSection", sectionId);
+
+                // Instant scroll to top for all devices
+                window.scrollTo(0, 0);
+            }
+
+            // Apply saved section immediately on load
+            showSection(savedSection);
+
+            function applyTranslations() {
+                // Update all elements with data-en and data-tl attributes
+                const translatableElements = document.querySelectorAll("[data-en][data-tl]");
+                translatableElements.forEach((el) => {
+                    // We update text content if it's one of these text tags
+                    if (["SPAN", "P", "H1", "H2", "H3", "H4"].includes(el.tagName)) {
+                        el.innerHTML = el.getAttribute(`data-${currentLang}`);
+                    }
+                });
+
+                // Update images with data-src-en and data-src-tl attributes
+                const translatableImages = document.querySelectorAll("img[data-src-en][data-src-tl]");
+                translatableImages.forEach((img) => {
+                    const newSrc = img.getAttribute(`data-src-${currentLang}`);
+                    if (newSrc) {
+                        img.setAttribute("src", newSrc);
+                    }
+                });
+            }
+
+            // Apply translations instantly on load
+            applyTranslations();
+
+            // Theme Toggle Logic
+            const themeToggleBtn = document.getElementById("themeToggle");
+
+            // Initialize Theme button based on loaded preference
+            updateThemeButtonText(isDarkMode, currentLang);
+
+            themeToggleBtn.addEventListener("click", () => {
+                document.body.classList.toggle("dark-mode");
+                const isDark = document.body.classList.contains("dark-mode");
+
+                // Save preference to localStorage
+                localStorage.setItem("preferredTheme", isDark ? "dark" : "light");
+
+                // Update button text and icon based on current language and theme
+                updateThemeButtonText(isDark, currentLang);
+            });
+
+            // Language Toggle Logic
+            const langToggleBtn = document.getElementById("langToggle");
+
+            // Initialize Language button text based on loaded preference
+            langToggleBtn.querySelector("span").textContent = currentLang === "en" ? "Tagalog" : "English";
+
+            langToggleBtn.addEventListener("click", () => {
+                currentLang = currentLang === "en" ? "tl" : "en";
+
+                // Save preference to localStorage
+                localStorage.setItem("preferredLanguage", currentLang);
+
+                // Update the language button text
+                langToggleBtn.querySelector("span").textContent = currentLang === "en" ? "Tagalog" : "English";
+
+                // Update the theme button text
+                const isDark = document.body.classList.contains("dark-mode");
+                updateThemeButtonText(isDark, currentLang);
+
+                // Update document language
+                document.documentElement.lang = currentLang;
+
+                // Apply updated text translations
+                applyTranslations();
+            });
+
+            function updateThemeButtonText(isDark, lang) {
+                const span = themeToggleBtn.querySelector("span");
+                const icon = themeToggleBtn.querySelector("i");
+
+                if (isDark) {
+                    icon.className = "fas fa-sun";
+                    span.textContent = lang === "en" ? "Light Mode" : "Light Mode";
+                } else {
+                    icon.className = "fas fa-moon";
+                    span.textContent = lang === "en" ? "Dark Mode" : "Dark Mode";
+                }
+            }
+
+            // Hide header controls on scroll
+            const headerControls = document.querySelector(".header-controls");
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 50) {
+                    headerControls.classList.add("hidden-on-scroll");
+                } else {
+                    headerControls.classList.remove("hidden-on-scroll");
+                }
+            });
+
+            // Hamburger Menu Logic
+            const menuToggleBtn = document.getElementById("menuToggle");
+            const sidebar = document.querySelector(".sidebar");
+            if (menuToggleBtn) {
+                menuToggleBtn.addEventListener("click", () => {
+                    sidebar.classList.toggle("menu-open");
+                });
+            }
+
+            // Scroll to Top Logic
+            const scrollTopBtn = document.getElementById("scrollTopBtn");
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    scrollTopBtn.classList.add("visible");
+                } else {
+                    scrollTopBtn.classList.remove("visible");
+                }
+            });
+
+            scrollTopBtn.addEventListener("click", () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+        </script>
+    </body>
+</html>
