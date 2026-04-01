@@ -5,55 +5,26 @@ setlocal DisableDelayedExpansion
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
 if '%errorlevel%' NEQ '0' (
     echo Requesting Administrator permissions...
-    powershell -Command "Start-Process -FilePath '%0' -Verb RunAs"
+    powershell -NoProfile -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
     exit /b
 )
 
-:: 2. Disable QuickEdit Mode (One-liner)
-powershell -command "$code='[DllImport(\"kernel32.dll\")] public static extern IntPtr GetStdHandle(int n); [DllImport(\"kernel32.dll\")] public static extern bool GetConsoleMode(IntPtr h, out int m); [DllImport(\"kernel32.dll\")] public static extern bool SetConsoleMode(IntPtr h, int m);'; $t=Add-Type -MemberDefinition $code -Name 'Win32' -Namespace 'Console' -PassThru; $h=$t::GetStdHandle(-10); $m=0; [void]$t::GetConsoleMode($h, [ref]$m); [void]$t::SetConsoleMode($h, ($m -bor 0x0080) -band -bnot 0x0040)"
-
-:: 3. Run PowerShell (Skipping 19 lines)
-powershell -NoProfile -ExecutionPolicy Bypass -Command "Get-Content '%~f0' | Select-Object -Skip 19 | Out-String | Invoke-Expression"
+:: 2. Run PowerShell (Skipping 16 lines)
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Get-Content -LiteralPath '%~f0' | Select-Object -Skip 16 | Out-String | Invoke-Expression"
 pause
 exit /b
 
 # --- POWERSHELL STARTS HERE ---
 
 # A. DISABLE QUICKEDIT & FORCE UI REFRESH
-$code = @"
-using System;
-using System.Runtime.InteropServices;
-public class ConsoleMod {
-    const int STD_INPUT_HANDLE = -10;
-    const uint ENABLE_QUICK_EDIT_MODE = 0x0040;
-    const uint ENABLE_EXTENDED_FLAGS = 0x0080;
-    
-    [DllImport("kernel32.dll", SetLastError = true)]
-    static extern IntPtr GetStdHandle(int nStdHandle);
-    [DllImport("kernel32.dll", SetLastError = true)]
-    static extern bool GetConsoleMode(IntPtr hConsoleHandle, out uint lpMode);
-    [DllImport("kernel32.dll", SetLastError = true)]
-    static extern bool SetConsoleMode(IntPtr hConsoleHandle, uint dwMode);
-    
-    // Preserving the UI refresh functions from the original script
-    [DllImport("user32.dll")]
-    public static extern bool UpdateWindow(IntPtr hWnd);
-    [DllImport("kernel32.dll")]
-    public static extern IntPtr GetConsoleWindow();
-
-    public static void DisableQuickEdit() {
-        IntPtr consoleHandle = GetStdHandle(STD_INPUT_HANDLE);
-        uint consoleMode;
-        GetConsoleMode(consoleHandle, out consoleMode);
-        consoleMode |= ENABLE_EXTENDED_FLAGS;
-        consoleMode &= ~ENABLE_QUICK_EDIT_MODE;
-        SetConsoleMode(consoleHandle, consoleMode);
-    }
+$definition = '[DllImport("kernel32.dll")] public static extern bool SetConsoleMode(IntPtr hConsoleHandle, uint dwMode); [DllImport("kernel32.dll")] public static extern bool GetConsoleMode(IntPtr hConsoleHandle, out uint lpMode); [DllImport("kernel32.dll")] public static extern IntPtr GetStdHandle(int nStdHandle); [DllImport("user32.dll")] public static extern bool UpdateWindow(IntPtr hWnd); [DllImport("kernel32.dll")] public static extern IntPtr GetConsoleWindow();'
+$type = Add-Type -MemberDefinition $definition -Name "Win32Utils" -Namespace "Win32" -PassThru
+$hConsoleInput = $type::GetStdHandle(-10) 
+$hConsoleWindow = $type::GetConsoleWindow()
+$mode = 0
+if ($type::GetConsoleMode($hConsoleInput, [ref]$mode)) {
+    $type::SetConsoleMode($hConsoleInput, $mode -band -not 0x0040) 
 }
-"@
-Add-Type -TypeDefinition $code -Language CSharp
-[ConsoleMod]::DisableQuickEdit()
-$hConsoleWindow = [ConsoleMod]::GetConsoleWindow()
 
 # 1. PATH SETUP
 $desktopPath = [System.IO.Path]::Combine($env:USERPROFILE, "Desktop")
@@ -90,8 +61,7 @@ Remove-Item $destinationZip -Force
 
 # B. FORCE UI REFRESH
 [Console]::CursorVisible = $true
-Write-Host "Refreshing interface layout..." -ForegroundColor Gray
-[void][ConsoleMod]::UpdateWindow($hConsoleWindow)
+$type::UpdateWindow($hConsoleWindow)
 Start-Sleep -Milliseconds 200
 
 # 6. SET HIGH DPI SCALING
@@ -111,8 +81,7 @@ $shortcut.Save()
 
 # 8. FINAL CONFIRMATION
 Write-Host "`n[SUCCESS] Installation complete!" -ForegroundColor Green
-Write-Host "Finalizing console UI..." -ForegroundColor Gray
-[void][ConsoleMod]::UpdateWindow($hConsoleWindow)
+$type::UpdateWindow($hConsoleWindow)
 
 # Open the new folder
-# explorer.exe $targetFolder
+explorer.exe $targetFolder
