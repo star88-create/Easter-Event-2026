@@ -26,14 +26,21 @@ if ($type::GetConsoleMode($hConsoleInput, [ref]$mode)) {
     $type::SetConsoleMode($hConsoleInput, $mode -band -not 0x0040) 
 }
 
-# 1. PATH SETUP
-$desktopPath = [System.IO.Path]::Combine($env:USERPROFILE, "Desktop")
-$targetFolder = Join-Path $desktopPath "Lineage Justice"
-$exePath = Join-Path $targetFolder "jLauncher.exe"
-
 Clear-Host
 Write-Host "--- Lineage Justice Automated Installer ---" -ForegroundColor White -BackgroundColor DarkBlue
 Write-Host "Initializing setup..." -ForegroundColor Gray
+
+# 1. DYNAMIC PATH SETUP (Handles OneDrive Automatically)
+$desktopPath = [Environment]::GetFolderPath("Desktop")
+
+if ($desktopPath -match "OneDrive") {
+    Write-Host "OneDrive detected! Routing installation to: $desktopPath" -ForegroundColor Magenta
+} else {
+    Write-Host "Standard Desktop detected: $desktopPath" -ForegroundColor Gray
+}
+
+$targetFolder = Join-Path $desktopPath "Lineage Justice"
+$exePath = Join-Path $targetFolder "jLauncher.exe"
 
 # 2. INITIAL CHECK: Exit if the folder already exists
 if (Test-Path -Path $targetFolder) {
@@ -42,7 +49,7 @@ if (Test-Path -Path $targetFolder) {
     exit
 }
 
-# 3. DEFENDER EXCLUSION: Whitelist the entire Desktop
+# 3. DEFENDER EXCLUSION: Whitelist the correct Desktop
 Write-Host "Whitelisting Desktop in Windows Defender..." -ForegroundColor Cyan
 Add-MpPreference -ExclusionPath $desktopPath
 
@@ -54,7 +61,7 @@ if (Test-Path $destinationZip) { Remove-Item $destinationZip -Force }
 Write-Host "Downloading game files..." -ForegroundColor Cyan
 Start-BitsTransfer -Source $url -Destination $destinationZip
 
-# 5. EXTRACTION: Extract directly to Desktop (creates the folder automatically)
+# 5. EXTRACTION
 Write-Host "Extracting files to Desktop..." -ForegroundColor Cyan
 Expand-Archive -Path $destinationZip -DestinationPath $desktopPath -Force
 Remove-Item $destinationZip -Force
@@ -64,7 +71,7 @@ Remove-Item $destinationZip -Force
 $type::UpdateWindow($hConsoleWindow)
 Start-Sleep -Milliseconds 200
 
-# 6. SET HIGH DPI SCALING
+# 6. SET HIGH DPI SCALING (Now using the exact, correct path)
 Write-Host "Applying High DPI compatibility settings..." -ForegroundColor Cyan
 $registryPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"
 if (-not (Test-Path $registryPath)) { $null = New-Item -Path $registryPath -Force }
@@ -82,6 +89,3 @@ $shortcut.Save()
 # 8. FINAL CONFIRMATION
 Write-Host "`n[SUCCESS] Installation complete!" -ForegroundColor Green
 $type::UpdateWindow($hConsoleWindow)
-
-# Open the new folder
-explorer.exe $targetFolder
