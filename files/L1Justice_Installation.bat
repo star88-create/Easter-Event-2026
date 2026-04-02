@@ -1,18 +1,3 @@
-### Why didn't the DPI setting apply?
-
-The DPI setting failed because Windows ties that specific registry setting to the **exact file path** of the executable. 
-
-In the previous script, we hardcoded the path as `C:\Users\YourName\Desktop\Lineage Justice\jLauncher.exe`. However, because OneDrive was active, your actual executable was sitting at `C:\Users\YourName\OneDrive\Desktop\Lineage Justice\jLauncher.exe`. 
-
-Since the path in the registry didn't match the actual location of the file on your hard drive, Windows simply ignored the DPI rule.
-
-### The Fix
-
-Instead of blindly guessing the Desktop location, we can ask Windows directly, "Where is the current user's actual Desktop?" by using `[Environment]::GetFolderPath("Desktop")`. This natively detects if OneDrive, Dropbox, or a custom folder redirection is in use.
-
-Here is the updated script. It explicitly checks for OneDrive, alerts you if it finds it, routes the extraction to the correct place, and ensures the exact file path is sent to the Windows Registry for the DPI fix.
-
-```batch
 @echo off
 setlocal DisableDelayedExpansion
 
@@ -86,11 +71,18 @@ Remove-Item $destinationZip -Force
 $type::UpdateWindow($hConsoleWindow)
 Start-Sleep -Milliseconds 200
 
-# 6. SET HIGH DPI SCALING (Now using the exact, correct path)
+# 6. SET HIGH DPI SCALING (Clean Wipe & Apply Application Scaling)
 Write-Host "Applying High DPI compatibility settings..." -ForegroundColor Cyan
 $registryPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"
 if (-not (Test-Path $registryPath)) { $null = New-Item -Path $registryPath -Force }
-New-ItemProperty -Path $registryPath -Name $exePath -Value "~ DPIUNAWARE" -PropertyType String -Force | Out-Null
+
+# Remove any existing bugged/stacked flags for this executable
+if (Get-ItemProperty -Path $registryPath -Name $exePath -ErrorAction SilentlyContinue) {
+    Remove-ItemProperty -Path $registryPath -Name $exePath -Force
+}
+
+# Apply ONLY the Application Scaling flag
+New-ItemProperty -Path $registryPath -Name $exePath -Value "~ HIGHDPIAWARE" -PropertyType String -Force | Out-Null
 
 # 7. CREATE DESKTOP SHORTCUT
 Write-Host "Creating Desktop shortcut..." -ForegroundColor Cyan
@@ -107,4 +99,3 @@ $type::UpdateWindow($hConsoleWindow)
 
 # Open the new folder
 explorer.exe $targetFolder
-```
